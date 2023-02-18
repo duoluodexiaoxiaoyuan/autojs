@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播展示数据</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+			background-color: #f0f0f0;
+		}
+		.header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 10%;
+			background-color: #333;
+			color: #fff;
+			font-size: 30px;
+		}
+		.main {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-grow: 1;
+			padding: 20px;
+			font-size: 48px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">轮播展示数据</div>
+		<div class="main">数据1</div>
+	</div>
+
+	<script>
+		const main = document.querySelector('.main');
+		let data = ['数据1'];
+
+		const updateData = () => {
+			// 模拟异步获取数据的过程
+			setTimeout(() => {
+				// 将新数据添加到数组中
+				data.push(`数据${data.length + 1}`);
+
+				// 等待上一次数据更新完成后，再展示新数据
+				const prevData = main.innerText;
+        console.log(prevData);
+				const newData = data[data.length - 1];
+        console.log(data)
+        console.log(newData)
+				if (prevData !== newData) {
+					main.innerText = newData;
+				}
+			}, 1000);
+		};
+
+		setInterval(() => updateData(), 5000);
+	</script>
+</body>
+</html>
